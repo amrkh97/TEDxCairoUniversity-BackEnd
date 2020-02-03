@@ -23,9 +23,9 @@ class AuthController{
         else
             response.status(401).send({error: true, message: "You are no authorized to access this endpoint"});
     }
-    static handleRoutes(app){
+    static handleRoutes(app, path){
         const router = express.Router();
-        app.use("/events", router);
+        app.use(path, router);
 
         // Dummy login using JWT
         app.post("/login", (request, response) => {

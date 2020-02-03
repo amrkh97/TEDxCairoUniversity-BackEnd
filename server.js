@@ -15,8 +15,8 @@ app.all("/", (_, response) => {
 });
 
 // Delegate routes to their controllers
-AuthController.handleRoutes(app);
-EventsController.handleRoutes(app);
+AuthController.handleRoutes("/", app);
+EventsController.handleRoutes("/events", app);
 
 
 // Start listening

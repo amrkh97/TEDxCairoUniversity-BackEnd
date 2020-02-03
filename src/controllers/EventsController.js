@@ -1,9 +1,9 @@
 import express from 'express';
 export default class EventsController{
     constructor(p1){ console.log(p1) }
-    static handleRoutes(app){
+    static handleRoutes(path, app){
         const router = express.Router();
-        app.use("/events", router);
+        app.use(path, router);
 
         router.get("/", (request, response) => {});
         router.get("/getAll", (request, response) => {});
