@@ -23,7 +23,7 @@ class AuthController{
         else
             response.status(401).send({error: true, message: "You are no authorized to access this endpoint"});
     }
-    static handleRoutes(app, path){
+    static handleRoutes(path, app){
         const router = express.Router();
         app.use(path, router);
 
