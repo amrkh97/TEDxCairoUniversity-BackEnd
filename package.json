@@ -9,6 +9,10 @@
   },
   "author": "Ahmed Wessam",
   "license": "ISC",
+"repository": {
+    "type": "git",
+    "url": "git+https://github.com/amrkh97/TEDxCairoUniversity-BackEnd.git"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
