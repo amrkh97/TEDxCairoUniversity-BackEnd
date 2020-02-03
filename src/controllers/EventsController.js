@@ -14,14 +14,18 @@ export default class EventsController{
         app.use(path, router);
 
         router.get("/", (request, response) => {});
-        router.get("/getAll", (request, response) => {});
+        router.get("/getAll", async (_, response) => {
+            const events_ent = await EventMapper.getAll();
+            const events = events_ent.map(elem => (elem.serializable));
+            response.send({events, error: false});
+        });
         router.put("/addEvent", (request, response) => {});
         router.get("/getEventByID/:id", async (request, response, next) => {
-            const event = await EventMapper.getEvent(parseInt(request.params.id));
+            const event = await EventMapper.get(parseInt(request.params.id));
             if(event === null){
                 EventsController.eventNotFound(response, next);
             }
-            response.send(event.serializable);
+            response.send({evetn: event.serializable, error: false});
 
         });
         router.get("/getEventByName", (request, response) => {});
