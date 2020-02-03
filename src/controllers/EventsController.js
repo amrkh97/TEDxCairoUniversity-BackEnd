@@ -13,7 +13,6 @@ export default class EventsController{
         const router = express.Router();
         app.use(path, router);
 
-        router.get("/", (request, response) => {});
         router.get("/getAll", async (_, response) => {
             const events_ent = await EventMapper.getAll();
             const events = events_ent.map(elem => (elem.serializable));
