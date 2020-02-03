@@ -1,4 +1,5 @@
 import express from 'express';
+import EventsController from './src/controllers/EventsController';
 
 const app = express();
 
@@ -13,9 +14,13 @@ const serverCfg = {
 app.use(express.json());
 
 // Root is not supported here
-app.get("/", (request, response) => {
+app.all("/", (_, response) => {
     response.status(400).send({"error": true, "message": "Malformed request"});
 });
+
+EventsController.handleRoutes(app);
+
+
 
 app.listen(serverCfg.port, () => {
     console.log("Server is up");
