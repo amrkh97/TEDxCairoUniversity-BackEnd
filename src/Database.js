@@ -15,9 +15,14 @@ class Database{
         }
         return Database.instance;
     }
-    static query(sql, resultCallback){
+    static query(sql){
         const self = new Database();
-        self.connection.query(sql, resultCallback);
+        return new Promise((resolve, reject) => {
+            self.connection.query(sql, (error, result) => {
+                if(error) reject(error);
+                else resolve(result);
+            });
+        });
     }
 }
 export default Database;
