@@ -4,7 +4,8 @@ const serverCfg = {
     database: {
         host: "localhost",
         username: "root",
-        password: "12341234"
+        password: "12341234",
+        database: "TEDxCU"
     }
 };
 

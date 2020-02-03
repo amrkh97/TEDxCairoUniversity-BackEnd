@@ -8,6 +8,7 @@ class Database{
                 host: CFG.database.host,
                 user: CFG.database.username,
                 password: CFG.database.password,
+                database: CFG.database.name
             });
             this.connection.connect((error) => { if(error) throw error; });
 
@@ -15,10 +16,10 @@ class Database{
         }
         return Database.instance;
     }
-    static query(sql){
+    static query(sql, params = null){
         const self = new Database();
         return new Promise((resolve, reject) => {
-            self.connection.query(sql, (error, result) => {
+            self.connection.query(sql, params, (error, result) => {
                 if(error) reject(error);
                 else resolve(result);
             });
